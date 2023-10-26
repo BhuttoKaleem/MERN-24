@@ -1,0 +1,27 @@
+
+.container{
+    display: flex;
+}
+.left-bar{
+    width: 20%;
+    /* background-color: antiquewhite; */
+    display: inline;
+    justify-content: center;
+}
+.content-bar{
+    width: 80%;
+    /* background-color: aquamarine; */
+    display: inline;
+}
+ .btns{
+    border: 2px solid;
+    border-radius: 5px;
+}
+img{
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+}
+body{
+    text-align: center;
+}
