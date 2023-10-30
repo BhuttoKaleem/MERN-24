@@ -1,0 +1,26 @@
+*{
+    border: 1px solid;
+}
+.container{
+    display: flex;
+}
+.container-1{
+    width: 40%;
+    height: 200px;
+    background-color: aqua;
+}
+.container-2{
+    width: 20%;
+    height: 200px;
+    background-color:azure;
+}
+.container-3{
+    width: 20%;
+    height: 200px;
+    background-color:brown;
+}
+.container-4{
+    width: 20%;
+    height: 200px;
+    background-color:black;
+}
