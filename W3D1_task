@@ -1,0 +1,41 @@
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+
+function App() {
+  let [name, setName] = useState('');
+  const [friends, setFriends] = useState(["awais", "john"
+]);
+  return (
+    <>
+      <div>
+        <form  onSubmit={(e)=>{
+          e.preventDefault();
+          const oldFriends = [...friends];
+          oldFriends.push(name);
+          setFriends(oldFriends);
+          setName = ("") ;
+        }}>
+          <input 
+          value={name}
+          onChange={(event)=>{
+            setName(event.target.value);
+          }}
+          type="text"/>
+          <button required type='submit'>
+          submit
+          </button>
+        </form>
+        <span>
+          {friends.map((friendItem) => {
+            return <li key={friendItem}>{friendItem}</li>;
+          })
+        }
+        </span>
+      </div>
+          </>
+  )
+}
+
+export default App
