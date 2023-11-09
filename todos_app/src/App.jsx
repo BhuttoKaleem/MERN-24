@@ -6,7 +6,7 @@ export default function App() {
 const [todo,setTodo] = useState([]);
 const [task, setTask] = useState("");
 const [status, setStatus] = useState("completed");
-const [time,setTime]= useState(new Date());
+// const [time,setTime]= useState(new Date());
   return (
     <div className='container'>
       <form 
@@ -17,7 +17,7 @@ const [time,setTime]= useState(new Date());
           {
             task: task,
             status: status,
-            time: time
+            time: new Date(),
           }
         ]);
       }}
