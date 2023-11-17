@@ -36,6 +36,7 @@ const stopWatch = ()=> {
     setSec(0);
     setMin(0);
     setHour(0);
+    start();
   }
 return(
   <React.Fragment>  
