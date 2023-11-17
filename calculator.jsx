@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "./index.css";
+import Header from "./Header";
 export default function Calculator() {
   const [result, setResult] = useState(0);
   const [val_1, setVal_1] = useState(0);
@@ -12,6 +13,7 @@ export default function Calculator() {
   }
   return (
     <>
+    <Header/>
       <div className="flex flex-col justify-center items-center shadow-md shadow-gray-500 rounded-md w-[480px] p-8">
         <form
           onSubmit={(e) => {

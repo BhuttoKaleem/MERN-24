@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import React from 'react'
+import Header from './Header'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './index.css'
@@ -40,6 +41,7 @@ const stopWatch = ()=> {
   }
 return(
   <React.Fragment>  
+    <Header/>
   <div>
       <div className='flex justify-center item-center mt-10 flex-col'>
       <h1 className="p-5 rounded font-bold bg-slate-900 text-white mb-2">Stop Watch</h1>
