@@ -71,15 +71,26 @@ router.patch('/update', async(req, res) => {
 
 
 
-router.delete('/delete?id', async(req, res) => {
-    const { id } = req.query;
+// router.delete('/delete?id', async(req, res) => {
+//     const { id } = req.query;
+//     const deletedData = await TodoModel.findByIdAndDelete(id); // deletes whose id is given 
+//     res.json({
+//         success: true,
+//         deletedData
+//     })
+// })
+
+
+
+
+router.delete('/delete/', async(req, res) => {
+    const { id } = req.body;
     const deletedData = await TodoModel.findByIdAndDelete(id); // deletes whose id is given 
     res.json({
         success: true,
         deletedData
     })
 })
-
 
 
 
