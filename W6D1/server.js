@@ -9,6 +9,7 @@ app.use(router);
 
 const PORT = 5000;
 async function connectDatabase() {
+    // await mongoose.connect('mongodb://127.0.0.1:27017/todo_app');
     await mongoose.connect('mongodb+srv://kaleem:kaleem@todoapi.9ihweva.mongodb.net/todos');
 }
 
@@ -71,14 +72,23 @@ router.patch('/update', async(req, res) => {
 
 
 
-// router.delete('/delete?id', async(req, res) => {
-//     const { id } = req.query;
-//     const deletedData = await TodoModel.findByIdAndDelete(id); // deletes whose id is given 
-//     res.json({
-//         success: true,
-//         deletedData
-//     })
-// })
+router.delete('/delete', async(req, res) => {
+    const { id } = req.query;
+    const deletedData = await TodoModel.findByIdAndDelete(id); // deletes whose id is given with ?id=abc
+    res.json({
+        success: true,
+        deletedData
+    })
+})
+
+router.delete('/delete/:id', async(req, res) => {
+    const { id } = req.params;
+    const deletedData = await TodoModel.findByIdAndDelete(id); // deletes whose id is given with delete/abc
+    res.json({
+        success: true,
+        deletedData
+    })
+})
 
 
 
