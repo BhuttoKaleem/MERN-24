@@ -1,11 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
 app.use(express.json());
 const router = express.Router();
 
+app.use(cors());
 app.use(router);
-
 
 const PORT = 5000;
 async function connectDatabase() {
@@ -33,7 +34,7 @@ router.post('/tasks', (req, res) => {
 })
 
 router.get('/tasks', async(req, res) => {
-    const tasks = await TodoModel.find(); // returns all the tasks
+    const tasks = await TodoModel.find({},{__v:0}); // returns all the tasks
     res.json({
         success: true,
         tasks
@@ -55,10 +56,11 @@ router.get('/InComplete', async(req, res) => {
 
 
 router.patch('/update', async(req, res) => {
-    const { id, taskText } = req.body; //JSON BODY
+    const { id, taskText, taskStatus } = req.body; //JSON BODY
     const findTask = await TodoModel.findById(id);
     if (findTask) {
         findTask.taskText = taskText;
+        findTask.taskStatus = taskStatus;
         findTask.save();
         res.json({ success: true, findTask })
     } else {
@@ -101,10 +103,6 @@ router.delete('/delete/', async(req, res) => {
         deletedData
     })
 })
-
-
-
-
 
 app.listen(PORT, () => {
     console.log(`server is working ${PORT}`);
