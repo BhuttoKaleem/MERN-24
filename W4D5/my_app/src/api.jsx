@@ -6,6 +6,9 @@ import { useEffect } from 'react';
 
 function  Api(){
     const [posts, setPosts] = useState([]);
+    useEffect(function () {
+      fetchPosts();
+    }, []);    
     async function fetchPosts() {
       axios.get("https://jsonplaceholder.typicode.com/posts")
       .then((result) => setPosts(result.data));
@@ -21,7 +24,7 @@ function  Api(){
     {posts.map(function (post) {
       return (
         <div key={post} className='border-black'>
-          <div className='w-30 h-10 overflow-y-scroll'>
+          <div className='w-30 h-10 overflow-auto'>
             {post?.title}
           </div>
         </div>

@@ -6,9 +6,11 @@ import Api from './api.jsx';
 import './index.css'
 import Todo from './todo.jsx'
 import StopWatch from './StopWatch.jsx'
+import TodoApi from './localhostApi.jsx';
 import {
   createBrowserRouter,
   RouterProvider,
+  Routes,Route,
 } from "react-router-dom";
 const router = createBrowserRouter([
   {
@@ -28,6 +30,11 @@ const router = createBrowserRouter([
     element: <Api/>,
   },
   {
+    path:"/TodoApi",
+    element:<TodoApi/>
+  }
+  ,
+  {
     path: "/todo",
     element: <Todo/>,
   },
@@ -36,6 +43,5 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router}/>
-
   </React.StrictMode>,
 )

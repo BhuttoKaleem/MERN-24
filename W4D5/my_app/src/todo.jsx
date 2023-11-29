@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css";
 import { useState } from "react";
 import Header from "./header.jsx";
-import {Footer} from "./Components/Footer.jsx";
+import { Footer } from "./Components/Footer.jsx";
 export default function Todo() {
   // const [todo,setTodo] = useState([]);
   const [task, setTask] = useState("");
@@ -16,21 +16,20 @@ export default function Todo() {
       <Header />
       <div className="container">
         <form
-            onSubmit={(event) => {
+          onSubmit={(event) => {
             // confirm();
-            setName(' ');
-            setTask(' ');
             event.preventDefault();
+            setName(" ");
+            setTask(" ");
             setTasks([
               ...tasks,
               {
                 task: task,
                 name: name,
-                time:new Date(),
+                time: new Date(),
               },
             ]);
-          } 
-        }
+          }}
         >
           <label>Task</label>
           <input
@@ -75,7 +74,10 @@ export default function Todo() {
                   <span>{index}</span>
                   <span>{todoItem.task}</span>
                   <span>{todoItem.name}</span>
-                   <span>{todoItem.time.getHours()}:{todoItem.time.getMinutes()}:{todoItem.time.getSeconds()}</span>
+                  <span>
+                    {todoItem.time.getHours()}:{todoItem.time.getMinutes()}:
+                    {todoItem.time.getSeconds()}
+                  </span>
                   <button
                     onClick={() => {
                       setTasks(tasks.filter((mytask) => mytask != todoItem));
@@ -103,7 +105,7 @@ export default function Todo() {
           })}
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </React.Fragment>
   );
 }
