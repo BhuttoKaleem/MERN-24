@@ -1,11 +1,12 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const mongoose = require("mongoose");
 app.use(express.json());
 const router = express.Router();
 
+app.use(cors());
 app.use(router);
-
 
 const PORT = 5000;
 async function connectDatabase() {

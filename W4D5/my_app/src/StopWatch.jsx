@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import React from 'react'
-import Header from './header'
+import Header from './Components/header'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './index.css'

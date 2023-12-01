@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Swal from 'sweetalert2'
 import axios from 'axios';
-import Header from "./header.jsx";
+import Header from './Components/header';
 import { useEffect } from 'react';
 
 function  Api(){

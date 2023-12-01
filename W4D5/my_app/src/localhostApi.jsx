@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 import { useState, useEffect } from "react";
-import Header from "./header.jsx";
+import Header from "./Components/header.jsx";
 // import { Footer } from "./Components/Footer.jsx";
 
 import axios from "axios";

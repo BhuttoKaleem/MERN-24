@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "./index.css";
-import Header from "./Header";
+import Header from "./Components/header";
 export default function Calculator() {
   const [result, setResult] = useState(0);
   const [val_1, setVal_1] = useState(0);
