@@ -1,0 +1,221 @@
+
+
+
+
+
+
+import { useState } from 'react';
+import  axios  from 'axios';
+import Swal from 'sweetalert2'
+import {useNavigate,Link} from 'react-router-dom'
+export default function SignUp() {
+  const navigate = useNavigate();
+  const [message,setMessage] = useState();
+        const [formData, setFormData] = useState({
+          username: '',
+          email: '',
+          password: '',
+        });
+      
+        const handleChange = (e) => {
+          const { name, value } = e.target;
+          setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+          }));      
+        }
+        const handleSubmit = async(e) => {
+            e.preventDefault();
+            // Perform signup logic here (e.g., API request to register user)
+            try {
+              const response = await axios.post('http://localhost:5000/user/signup',{
+                username: formData.username,
+                email: formData.email,
+                password:formData.password
+              });
+              Swal.fire({
+                title: "Registered!",
+                text: "Registered Successfully!",
+                icon: "success"
+              });
+              navigate('/login')
+              // setIsLoggedIn(true)          
+            } catch (error) {
+              // setMessage("user already registered please login");
+              Swal.fire({
+                title: "Registration failed!",
+                text: "you are already registered please login!",
+                icon: "error"
+              });
+              navigate('/login')
+            }
+            // console.log('SignUp form submitted:', formData);
+            // Reset form fields after submission
+            setFormData({
+              username: '',
+              email: '',
+              password: '',
+            });
+          };
+    return (
+
+            <main className="h-screen flex flex-col">
+              <div className='flex-grow'>
+            <div className="max-w-md mx-auto mt-10 p-[10vh] bg-gray-200 rounded-md">
+      <h2 className="mb-4 text-2xl font-bold text-center">Sign Up</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label htmlFor="username" className="block text-gray-700">
+            Username:
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-gray-700">
+            Email:
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="password" className="block text-gray-700">
+            Password:
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          />
+        </div>
+          <button
+          type="submit"
+          className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+        >
+          Sign Up
+        </button>
+      </form>
+      <div className='items-center'><span>Already have an account? <Link to={"/Login"} className='font-bold'>Login</Link></span></div>
+      </div>
+    </div>
+                </main>
+    )
+    }
+
+
+
+
+import React from 'react'
+import { useState } from 'react';
+export default function ContactUs() {
+        const [formData, setFormData] = useState({
+          name: '',
+          email: '',
+          message: '',
+        });
+      
+        const handleChange = (e) => {
+          const { name, value } = e.target;
+          setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+          }));
+        };
+      
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          // Here you can perform actions like sending the form data to a backend server
+          // For example: using fetch or Axios to make a POST request to a backend API
+          console.log('Form submitted:', formData);
+          // Reset form fields after submission
+          setFormData({
+            name: '',
+            email: '',
+            message: '',
+          });
+        };     
+    return (
+            <React.Fragment>
+                       <main className="h-screen flex flex-col">
+              {/* <div className='flex-grow'> */}
+            <div className="p-6 m-4 bg-white rounded shadow-xl ">
+      <h2 className="text-2xl mb-4 text-center font-bold">Contact Us</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label htmlFor="name" className="block text-gray-700">
+            Name:
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-gray-700">
+            Email:
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="mb-6">
+          <label htmlFor="message" className="block text-gray-700">
+            Message:
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+            rows="4"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+        >
+          Submit
+        </button>
+      </form>
+      </div>
+    {/* </div>      */}
+                </main>
+                </React.Fragment>
+  )
+}
+
+
+
+
+
